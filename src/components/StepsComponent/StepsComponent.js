@@ -17,7 +17,7 @@ class StepsComponent extends Component {
             {
                 name: 'Delete Duplicates and Conflicts; Formating data for Metagraph',
                 info: 'Clustering method may create conflicting and duplicate rules. This block is used to create unique array of fuzzy knowledge base rules and conducting an additional automatic procedure for formatting rules according to the principle of nodes and links',
-                link: 'http://localhost:3000/uploads'
+                link: '/uploads'
             },
             {
                 name: 'Visualization of Metagraph',
