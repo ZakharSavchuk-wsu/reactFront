@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 
-class Home extends Component {
+class FileUpload extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -127,4 +127,4 @@ class Home extends Component {
 	}
 }
 
-export default Home;
+export default FileUpload;
