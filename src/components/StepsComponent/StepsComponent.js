@@ -22,7 +22,7 @@ class StepsComponent extends Component {
             {
                 name: 'Visualization of Metagraph',
                 info: 'This block presents the use of methods of visualization of fuzzy logical rules in the form of a metagraph, as a new method of graphical analysis of complex logical structures. It allows describing and visualizing the logical relationships of interconnected sets of elements and their interaction with other groups of elements.',
-                link: 'https://www.google.com/search?q=%D0%BC%D0%B5%D1%82%D0%B0%D0%B3%D1%80%D0%B0%D1%84&rlz=1C1CHBD_ruUA881UA881&oq=%D0%BC%D0%B5%D1%82%D0%B0%D0%B3%D1%80%D0%B0%D1%84&aqs=chrome..69i57j69i59l2j0l3.7151j0j4&sourceid=chrome&ie=UTF-8'
+                link: '/metagraph'
             }]
         };
     }

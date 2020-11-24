@@ -1,0 +1,258 @@
+{
+ "nodes": [
+  {
+   "id": "yellow_middle",
+   "group": 2
+  },
+  {
+   "id": "yellow_high",
+   "group": 2
+  },
+  {
+   "id": "sava_low",
+   "group": 2
+  },
+  {
+   "id": "sava_high",
+   "group": 2
+  },
+  {
+   "id": "rule_5",
+   "group": 3
+  },
+  {
+   "id": "rule_4",
+   "group": 3
+  },
+  {
+   "id": "rule_3",
+   "group": 3
+  },
+  {
+   "id": "rule_2",
+   "group": 3
+  },
+  {
+   "id": "rule_1",
+   "group": 3
+  },
+  {
+   "id": "rule_0",
+   "group": 3
+  },
+  {
+   "id": "qos_low",
+   "group": 1
+  },
+  {
+   "id": "qos_high",
+   "group": 1
+  },
+  {
+   "id": "green_middle",
+   "group": 2
+  },
+  {
+   "id": "green_low",
+   "group": 2
+  },
+  {
+   "id": "gold_middle",
+   "group": 2
+  },
+  {
+   "id": "gold_low",
+   "group": 2
+  },
+  {
+   "id": "brown_low",
+   "group": 2
+  },
+  {
+   "id": "brown_high",
+   "group": 2
+  }
+ ],
+ "links": [
+  {
+   "source": "rule_0",
+   "target": "qos_low",
+   "value": 25
+  },
+  {
+   "source": "rule_1",
+   "target": "qos_high",
+   "value": 12.5
+  },
+  {
+   "source": "rule_2",
+   "target": "qos_high",
+   "value": 10
+  },
+  {
+   "source": "rule_3",
+   "target": "qos_low",
+   "value": 5
+  },
+  {
+   "source": "rule_4",
+   "target": "qos_low",
+   "value": 5
+  },
+  {
+   "source": "rule_5",
+   "target": "qos_high",
+   "value": 5
+  },
+  {
+   "source": "sava_low",
+   "target": "rule_0",
+   "value": 4
+  },
+  {
+   "source": "gold_low",
+   "target": "rule_0",
+   "value": 4
+  },
+  {
+   "source": "brown_high",
+   "target": "rule_0",
+   "value": 4
+  },
+  {
+   "source": "green_low",
+   "target": "rule_0",
+   "value": 4
+  },
+  {
+   "source": "yellow_middle",
+   "target": "rule_0",
+   "value": 4
+  },
+  {
+   "source": "sava_low",
+   "target": "rule_1",
+   "value": 4
+  },
+  {
+   "source": "gold_low",
+   "target": "rule_1",
+   "value": 4
+  },
+  {
+   "source": "brown_low",
+   "target": "rule_1",
+   "value": 4
+  },
+  {
+   "source": "green_low",
+   "target": "rule_1",
+   "value": 4
+  },
+  {
+   "source": "yellow_middle",
+   "target": "rule_1",
+   "value": 4
+  },
+  {
+   "source": "sava_low",
+   "target": "rule_2",
+   "value": 4
+  },
+  {
+   "source": "gold_middle",
+   "target": "rule_2",
+   "value": 4
+  },
+  {
+   "source": "brown_low",
+   "target": "rule_2",
+   "value": 4
+  },
+  {
+   "source": "green_low",
+   "target": "rule_2",
+   "value": 4
+  },
+  {
+   "source": "yellow_middle",
+   "target": "rule_2",
+   "value": 4
+  },
+  {
+   "source": "sava_high",
+   "target": "rule_3",
+   "value": 4
+  },
+  {
+   "source": "gold_low",
+   "target": "rule_3",
+   "value": 4
+  },
+  {
+   "source": "brown_low",
+   "target": "rule_3",
+   "value": 4
+  },
+  {
+   "source": "green_low",
+   "target": "rule_3",
+   "value": 4
+  },
+  {
+   "source": "yellow_middle",
+   "target": "rule_3",
+   "value": 4
+  },
+  {
+   "source": "sava_low",
+   "target": "rule_4",
+   "value": 4
+  },
+  {
+   "source": "gold_low",
+   "target": "rule_4",
+   "value": 4
+  },
+  {
+   "source": "brown_low",
+   "target": "rule_4",
+   "value": 4
+  },
+  {
+   "source": "green_low",
+   "target": "rule_4",
+   "value": 4
+  },
+  {
+   "source": "yellow_high",
+   "target": "rule_4",
+   "value": 4
+  },
+  {
+   "source": "sava_low",
+   "target": "rule_5",
+   "value": 4
+  },
+  {
+   "source": "gold_low",
+   "target": "rule_5",
+   "value": 4
+  },
+  {
+   "source": "brown_low",
+   "target": "rule_5",
+   "value": 4
+  },
+  {
+   "source": "green_middle",
+   "target": "rule_5",
+   "value": 4
+  },
+  {
+   "source": "yellow_middle",
+   "target": "rule_5",
+   "value": 4
+  }
+ ]
+}

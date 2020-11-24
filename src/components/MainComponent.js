@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import HomeComponent from './HomeComponent.js';
 import AboutComponent from './AboutComponent.js';
 import StepsComponent from './StepsComponent/StepsComponent.js';
+import Metagraph from './MetaGraphComponent/Metagraph.js'
 
 class MainComponet extends Component {
     render() {
@@ -13,10 +14,10 @@ class MainComponet extends Component {
                 <HeaderComponent />
                 <Switch>
                     <Route path='/home' component={HomeComponent} />
-                    {/* <Route path='/menu/:dishId' component={DishWithId} /> */}
                     <Route exact path='/aboutus' component={AboutComponent} />
                     <Route exact path='/steps' component={StepsComponent} />
-                    <Route exact path='/uploads' component={FileUpload} />
+                    <Route path='/uploads' component={FileUpload} />
+                    <Route path='/metagraph' component={Metagraph} />
                     <Redirect to="/home" />
                 </Switch>
             </>

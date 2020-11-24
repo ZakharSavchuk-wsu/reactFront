@@ -354,5 +354,4 @@ class HomeComponent extends Component {
     }
 }
 
-
 export default HomeComponent
