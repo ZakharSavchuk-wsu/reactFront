@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
+var fileDownload = require('js-file-download');
 
 class FileUpload extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			filePath: null,
 			selectedFile: null,
 			filekey: null,
-			locationFile: null
+			newFileName: null
 		}
 	}
 
@@ -44,9 +46,11 @@ class FileUpload extends Component {
 						} else {
 							// Success
 							let fileName = response.data;
-							console.log('filedata', fileName);
-							this.setState({ filekey: fileName.image })
+							// console.log('filedata', fileName);
+							this.setState({ filekey: fileName.image, filePath: fileName.location })
 							this.ocShowAlert('File Uploaded', '#3089cf');
+							console.log(this.state.filekey)
+							console.log(this.state.filePath)
 						}
 					}
 				}).catch((error) => {
@@ -60,7 +64,7 @@ class FileUpload extends Component {
 	};
 
 	fileFilter = (event) => {
-		axios.post('/api/profile/filter', { filekey: this.state.filekey })
+		axios.post('/api/profile/filter', { filePath: this.state.filePath })
 			.then((response) => {
 				const message = 'No file uploaded';
 				const qosMessage = 'There`s no atribute like qos';
@@ -72,11 +76,34 @@ class FileUpload extends Component {
 					} else {
 						// Success
 						let someData = response.data;
-						console.log(someData);
-						this.setState({ locationFile: someData });
+						// console.log(someData);
+						this.setState({ newFileName: someData });
 						this.ocShowAlert(`File Filtered`, '#3089cf');
+						console.log(this.state.newFileName);
 					}
 				}
+			})
+	};
+
+	fileDownload = (event) => {
+		axios.post('/api/profile/filedownload', { responseType: 'blob', newFileName: this.state.newFileName })
+			.then((response) => {
+				const message = 'No file uploaded';
+				// const qosMessage = 'There`s no atribute like qos';
+				if (response.data === message) {
+					this.ocShowAlert(response.data, 'yellow');
+				} else {
+					// 	if (response.data === qosMessage) {
+					// 		this.ocShowAlert(response.data, 'blue');
+					// 	} else {
+					// Success
+					fileDownload(JSON.stringify(response.data, null, ' '), 'UniqRule.json');
+					console.log(response.data);
+					// this.setState({ newFileName: someData });
+					// this.ocShowAlert(`File Filtered`, '#3089cf');
+					// console.log(this.state.newFileName);
+				}
+				// }
 			})
 	};
 
@@ -117,7 +144,8 @@ class FileUpload extends Component {
 								<button className="btn btn-success" onClick={this.fileFilter}>Filter!</button>
 							</div>
 							<div className="mt-5 ml-4">
-								<a className="btn btn-success" href={this.state.locationFile} >Download!</a>
+								{/* <a className="btn btn-success" href={this.state.locationFile} >Download!</a> */}
+								<button className="btn btn-success" onClick={this.fileDownload} >Download!</button>
 							</div>
 						</div>
 					</div>

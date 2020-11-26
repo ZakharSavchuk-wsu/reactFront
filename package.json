@@ -9,6 +9,7 @@
     "file-system": "^2.2.2",
     "http-proxy-middleware": "^1.0.6",
     "jquery": "^3.3.1",
+    "js-file-download": "^0.4.12",
     "palette-js": "^1.0.3",
     "prop-types": "^15.6.2",
     "qs": "^6.5.2",
