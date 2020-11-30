@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 var fileDownload = require('js-file-download');
-const serverAddress = 'http://diginet-server';
+
 class FileUpload extends Component {
 	constructor(props) {
 		super(props);
@@ -25,7 +25,7 @@ class FileUpload extends Component {
 		// If file selected
 		if (this.state.selectedFile) {
 			data.append('profileImage', this.state.selectedFile, this.state.selectedFile.name);
-			axios.post(`${serverAddress}/api/profile/profile-img-upload`, data, {
+			axios.post(`/api/profile/profile-img-upload`, data, {
 				headers: {
 					'accept': 'application/json',
 					'Accept-Language': 'en-US,en;q=0.8',
@@ -64,7 +64,7 @@ class FileUpload extends Component {
 	};
 
 	fileFilter = (event) => {
-		axios.post(`${serverAddress}/api/profile/filter`, { filePath: this.state.filePath })
+		axios.post(`/api/profile/filter`, { filePath: this.state.filePath })
 			.then((response) => {
 				const message = 'No file uploaded';
 				const qosMessage = 'There`s no atribute like qos';
@@ -86,7 +86,7 @@ class FileUpload extends Component {
 	};
 
 	fileDownload = (event) => {
-		axios.post(`${serverAddress}/api/profile/filedownload`, { responseType: 'blob', newFileName: this.state.newFileName })
+		axios.post(`/api/profile/filedownload`, { responseType: 'blob', newFileName: this.state.newFileName })
 			.then((response) => {
 				const message = 'No file uploaded';
 				// const qosMessage = 'There`s no atribute like qos';
