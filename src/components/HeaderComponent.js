@@ -48,7 +48,7 @@ class HeaderComponent extends Component {
 
                 <Jumbotron>
                     <div className='container container-fluid'>
-                        <h1 className="display-4">Fuzzy Logic Project</h1>
+                        <h1 className="display-4">Fuzzy Logic Projects</h1>
                         <p className="lead">This project presents an approach of structuring fuzzy knowledge base in the format of logical rules, taking into account the transformation of numerical values into terms of linguistic variables and the use of optimal methods for formatting conflicting and duplicate rules under consideration of their logical inter-connections. For visualization of these logical rules to use the metagraph theory apparatus as a method of graphical analysis of complex logical structures has been used.</p>
                     </div>
                 </Jumbotron>
