@@ -6,6 +6,8 @@ import HomeComponent from './HomeComponent.js';
 import AboutComponent from './AboutComponent.js';
 import StepsComponent from './StepsComponent/StepsComponent.js';
 import Metagraph from './MetaGraphComponent/Metagraph.js'
+import Clustering from './Clustering.js'
+import Clean from './Clean.js';
 
 class MainComponet extends Component {
     render() {
@@ -18,6 +20,8 @@ class MainComponet extends Component {
                     <Route exact path='/steps' component={StepsComponent} />
                     <Route path='/uploads' component={FileUpload} />
                     <Route path='/metagraph' component={Metagraph} />
+                    <Route path='/clustering' component={Clustering} />
+                    <Route path='/clean' component={Clean} />
                     <Redirect to="/home" />
                 </Switch>
             </>

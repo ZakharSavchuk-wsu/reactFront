@@ -8,11 +8,11 @@ class StepsComponent extends Component {
             DATA: [{
                 name: 'Clear Statistical Data',
                 info: 'Preprocessing of data sets applies pre-cleaning of data from randomly occurring errors, using a combination of existing efficient approaches into a single algorithm that dynamically analyzes the data and determines the necessary types of cleaning',
-                link: 'https://ru.wikipedia.org/wiki/%D0%9E%D1%87%D0%B8%D1%81%D1%82%D0%BA%D0%B0_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85'
+                link: '/clean'
             }, {
                 name: 'Create Clusters',
                 info: 'Building fuzzy logical rules using universal methods of clustering in the classical implementation. They are algorithms K-means and Fuzzy C-means',
-                link: 'https://neerc.ifmo.ru/wiki/index.php?title=%D0%9A%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F'
+                link: '/clustering'
             },
             {
                 name: 'Delete Duplicates and Conflicts; Formating data for Metagraph',
