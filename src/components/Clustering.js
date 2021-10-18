@@ -42,7 +42,7 @@ class Clustering extends Component {
         data.append('Terms', `${this.state.Terms}`);
         var config = {
             method: 'post',
-            url: 'https://fkb-dev.azurewebsites.net/api/Clustering/ExecuteKMeansClustering',
+            url: 'https://d-fkb.azurewebsites.net/api/Clustering/ExecuteKMeansClustering',
             headers: {
                 'accept': 'application/json',
                 'Content-Type': `multipart/form-data`
