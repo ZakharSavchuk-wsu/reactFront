@@ -9,8 +9,8 @@ import axios from 'axios';
 
 
 // axios.defaults.baseURL = 'http://10.33.21.145:5000';
-axios.defaults.baseURL = 'http://localhost:5000/';
-// axios.defaults.baseURL = 'https://metagraph-server.herokuapp.com/'; 
+// axios.defaults.baseURL = 'http://localhost:5000/';
+axios.defaults.baseURL = 'https://metagraph-server.herokuapp.com/'; 
 // axios.defaults.baseURL = 'https://clustering-dev.azurewebsites.net';
 
 

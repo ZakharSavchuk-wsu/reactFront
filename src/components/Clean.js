@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
+import { CLEANER_ENDPOINTS } from './constants/constants';
 var fileDownload = require('js-file-download');
 // var fs = require('fs');
 class Clean extends Component {
@@ -49,7 +50,7 @@ class Clean extends Component {
         console.log(data)
         var config = {
             method: 'post',
-            url: 'https://fkb-dev.azurewebsites.net/api/cleanse',
+            url: CLEANER_ENDPOINTS.CLEANSE,
             headers: {
                 'accept': 'application/json',
                 'Content-Type': `multipart/form-data`

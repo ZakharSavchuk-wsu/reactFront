@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
+import { CLEANER_ENDPOINTS } from './constants/constants';
 var fileDownload = require('js-file-download');
 // var fs = require('fs');
 class Clustering extends Component {
@@ -42,7 +43,7 @@ class Clustering extends Component {
         data.append('Terms', `${this.state.Terms}`);
         var config = {
             method: 'post',
-            url: 'https://d-fkb.azurewebsites.net/api/Clustering/ExecuteKMeansClustering',
+            url: CLEANER_ENDPOINTS.CLUSTERING,
             headers: {
                 'accept': 'application/json',
                 'Content-Type': `multipart/form-data`
