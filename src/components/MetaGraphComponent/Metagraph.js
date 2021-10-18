@@ -152,6 +152,20 @@ class Metagraph extends PureComponent {
         </div>
         <div className='App-body'>
           <div>
+            <div className='circlesWrapper' >
+              <div className='item-container'>
+                <div className='greenCircle' />
+                <h3>Vertices of metagraph</h3>
+              </div>
+              <div className='item-container'>
+                <div className='blueCircle' />
+                <h3>Meta-vertices of metagraph</h3>
+              </div>
+              <div className='item-container'>
+                <div className='orangeCircle' />
+                <h3>Result vertices</h3>
+              </div>
+            </div>
             <Graph
               nodes={this.state.nodes}
               links={this.state.links}

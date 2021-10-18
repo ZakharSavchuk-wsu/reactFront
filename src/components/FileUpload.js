@@ -10,7 +10,15 @@ class FileUpload extends Component {
 			filePath: null,
 			selectedFile: null,
 			filekey: null,
-			newFileName: null
+			newFileName: null,
+			rules: [{
+				RSRP: "middle",
+				RSRQ: "middle",
+				RSSI: "middle",
+				SINR: "low",
+				Cell_Bandwidth: "middle",
+				qos: "high"
+			}]
 		}
 	}
 
@@ -76,10 +84,30 @@ class FileUpload extends Component {
 					} else {
 						// Success
 						let someData = response.data;
-						// console.log(someData);
+						console.log('someData', response);
 						this.setState({ newFileName: someData });
 						this.ocShowAlert(`File Filtered`, '#3089cf');
 						console.log(this.state.newFileName);
+					}
+				}
+			})
+	};
+
+	showRules = (event) => {
+		axios.post(`/api/profile/rules`, { filePath: this.state.filePath })
+			.then((response) => {
+				const message = 'No file uploaded';
+				const qosMessage = 'There`s no atribute like qos';
+				if (response.data === message) {
+					this.ocShowAlert(response.data, 'yellow');
+				} else {
+					if (response.data === qosMessage) {
+						this.ocShowAlert(response.data, 'blue');
+					} else {
+						// Success
+						let someData = response.data;
+						console.log('someData', someData);
+						this.setState({ rules: someData })
 					}
 				}
 			})
@@ -144,12 +172,23 @@ class FileUpload extends Component {
 								<button className="btn btn-success" onClick={this.fileFilter}>Filter!</button>
 							</div>
 							<div className="mt-5 ml-4">
+								<button className="btn btn-success" onClick={this.showRules}>Show Rules </button>
+							</div>
+							<div className="mt-5 ml-4">
 								{/* <a className="btn btn-success" href={this.state.locationFile} >Download!</a> */}
 								<button className="btn btn-success" onClick={this.fileDownload} >Download!</button>
 							</div>
 						</div>
 					</div>
 				</div>
+
+				{ this.state.rules.map((rule, index) => {
+					return (
+						<li key={index}><strong>IF</strong> RSRP={rule.RSRP}<strong> AND</strong> RSRQ={rule.RSRQ}<strong> AND</strong> RSSI={rule.RSSI}<strong> AND</strong> SINR={rule.SINR}<strong> AND</strong> Cell Bandwidth={rule.Cell_Bandwidth}<strong> THEN</strong> QoS={rule.qos}  </li>
+					)
+				}
+				)}
+
 			</div>
 		);
 	}
