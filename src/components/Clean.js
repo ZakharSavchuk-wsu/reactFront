@@ -60,7 +60,7 @@ class Clean extends Component {
 
         axios(config)
             .then(function (response) {
-                fileDownload((response.data), 'Cluster.csv');
+                fileDownload((response.data), 'Cleansing.csv');
                 // console.log(JSON.stringify( response.data));
             })
             .catch(function (error) {
@@ -112,7 +112,7 @@ class Clean extends Component {
                             </div>
                             <div className="mt-5 ml-4">
                                 {/* <a className="btn btn-success" href={this.state.locationFile} >Download!</a> */}
-                                <button className="btn btn-success" onClick={this.fileDownload} >Download!</button>
+                                <button className="btn btn-success" onClick={fileDownload} >Download!</button>
                             </div>
                         </div>
                     </div>

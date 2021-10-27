@@ -103,9 +103,10 @@ class Metagraph extends PureComponent {
   };
 
   ocShowAlert = (message, background = '#3089cf') => {
+    const uiMessage = typeof message === 'object' ? 'internal server error' : message;
     let alertContainer = document.querySelector('#oc-alert-container'),
       alertEl = document.createElement('div'),
-      textNode = document.createTextNode(message);
+      textNode = document.createTextNode(uiMessage);
     alertEl.setAttribute('class', 'oc-alert-pop-up');
     $(alertEl).css('background', background);
     alertEl.appendChild(textNode);
@@ -118,7 +119,7 @@ class Metagraph extends PureComponent {
 
   componentDidMount() {
     this.updateWindowDimensions();
-    this.buildMetagraph();
+    // this.buildMetagraph();
   }
 
   componentWillUnmount() {
