@@ -171,9 +171,9 @@ class FileUpload extends Component {
 							<div className="mt-5 ml-4">
 								<button className="btn btn-success" onClick={this.fileFilter}>Filter!</button>
 							</div>
-							<div className="mt-5 ml-4">
+							{/* <div className="mt-5 ml-4">
 								<button className="btn btn-success" onClick={this.showRules}>Show Rules </button>
-							</div>
+							</div> */}
 							<div className="mt-5 ml-4">
 								{/* <a className="btn btn-success" href={this.state.locationFile} >Download!</a> */}
 								<button className="btn btn-success" onClick={this.fileDownload} >Download!</button>
