@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
+import { v4 as uuidv4 } from 'uuid'
 import { CLEANER_ENDPOINTS } from './constants/constants';
 var fileDownload = require('js-file-download');
 // var fs = require('fs');
+
+const dumpClusterCounts = 3
 class Clustering extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +18,13 @@ class Clustering extends Component {
             selectedFile: null,
             filekey: null,
             newFileName: null,
+            isFakeLoading: false,
+            termsData: [
+                {
+                    id: uuidv4(),
+                    value: ''
+                }
+            ]
         }
         this.handleChangeClusternumber = this.handleChangeClusternumber.bind(this);
         this.handleChangeTerms = this.handleChangeTerms.bind(this);
@@ -29,18 +39,59 @@ class Clustering extends Component {
         this.setState({ Terms: event.target.value });
     }
 
+    handleChangeTermsData = (id) => (event) => {
+        const { termsData } = this.state
+        const { value } = event.target
+        const newTermsData = termsData.map(term => {
+            if (term.id === id) return { ...term, value }
+            return term
+        })
+        this.setState({ termsData: newTermsData })
+    }
+
+    handleAddTerm = () => {
+        const newTerm = {
+            id: uuidv4(),
+            value: ''
+        }
+        this.setState(prev => ({
+            termsData: [...prev.termsData, newTerm]
+        }))
+    }
+
+    handleRemoveTerm = (id) => () => {
+        const { termsData } = this.state
+        const newTermsData = termsData.filter(term => term.id !== id)
+        this.setState({ termsData: newTermsData })
+    }
+
     singleFileChangedHandler = (event) => {
         this.setState({
-            selectedFile: event.target.files[0]
+            selectedFile: event.target.files[0],
+            isFakeLoading: true
         });
+
+        setTimeout(() => {
+            this.setState({
+                NumberOfClusters: dumpClusterCounts,
+                isFakeLoading: false
+            })
+        }, 2000)
     };
+
+    generateTermString = (data) => {
+        const generatedString = data.map((term, index) => {
+            return `${index}:${term.value}`
+        }).join(';')
+        return generatedString
+    }
 
     singleFileUploadHandler = (event) => {
         const data = new FormData();
 
         data.append('NumberOfClusters', `${this.state.NumberOfClusters}`);
         data.append('File', this.state.selectedFile);
-        data.append('Terms', `${this.state.Terms}`);
+        data.append('Terms', `${this.generateTermString(this.state.termsData)}`);
         var config = {
             method: 'post',
             url: CLEANER_ENDPOINTS.CLUSTERING,
@@ -55,9 +106,9 @@ class Clustering extends Component {
             .then(function (response) {
                 fileDownload(JSON.stringify(response.data, null, ' '), 'Cluster.json');
                 console.log(JSON.stringify(response.data));
-                    // this.setState({
-                    //     centroid: centr.centroids
-                    // })
+                // this.setState({
+                //     centroid: centr.centroids
+                // })
             })
             .catch(function (error) {
                 console.log(error);
@@ -124,6 +175,7 @@ class Clustering extends Component {
     };
 
     render() {
+        const { termsData, NumberOfClusters, isFakeLoading } = this.state
         return (
             <div className='container'>
                 {/* For Alert box*/}
@@ -135,24 +187,65 @@ class Clustering extends Component {
                         <p className="text-muted" style={{ marginLeft: '12px' }}>Please upload your file only in .CSV format</p>
                     </div>
                     <div className="card-body">
-                        <p className="card-text">Select your local file for clustering</p>
+                        {/* <p className="card-text">Enter number of clusters</p>
                         <input type='text' value={this.state.NumberOfClusters} onChange={this.handleChangeClusternumber} />
-                        <p className="card-text">Select your local file for clustering</p>
-                        <p className="card-text">0:low;1:middle;2:high;3:very-high</p>
-                        <input type='text' value={this.state.Terms} onChange={this.handleChangeTerms} />
-                        <p className="card-text">Select your local file for clustering</p>
+                        <p className="card-text">Select your local file for clustering</p> */}
+                        {/* <p className="card-text">0:low;1:middle;2:high;3:very-high</p> */}
+                        {/* <input type='text' value={this.state.Terms} onChange={this.handleChangeTerms} /> */}
+                        {isFakeLoading &&
+                            <div class="d-flex align-items-center mb-3">
+                                <strong>Data is procesing...</strong>
+                                <div class="spinner-border ml-1 text-primary" role="status" aria-hidden="true"></div>
+                            </div>
+                        }
+                        {NumberOfClusters ?
+                            <div
+                                className='inputsWrapper mb-3'
+                            >
+                                <div class="alert alert-primary" role="alert">
+                                    The system identified 3 clusters
+                                </div>
+                                {termsData.map(term => {
+                                    const { id, value } = term
+                                    return (
+                                        <div
+                                            className='inputWithClose mt-1'
+                                        >
+                                            <input
+                                                key={id}
+                                                type='text'
+                                                value={value}
+                                                onChange={this.handleChangeTermsData(id)}
+                                            />
+                                            <button
+                                                onClick={this.handleRemoveTerm(id)}
+                                                className='abortButton btn-danger'
+                                                disabled={termsData.length === 1}
+                                            >
+                                                ABORT
+                                            </button>
+                                        </div>
+                                    )
+                                })}
+                                {termsData.length < dumpClusterCounts &&
+                                    <div className="mt-2">
+                                        <button className="btn btn-success" onClick={this.handleAddTerm}>Add term data</button>
+                                    </div>
+                                }
+                            </div> : null
+                        }
                         <input type="file" onChange={this.singleFileChangedHandler} />
                         <div className='row'>
                             <div className="mt-5 ml-4">
                                 <button className="btn btn-info" onClick={this.singleFileUploadHandler}>Upload!</button>
                             </div>
-                            <div className="mt-5 ml-4">
+                            {/* <div className="mt-5 ml-4">
                                 <button className="btn btn-success" onClick={this.fileFilter}>Filter!</button>
                             </div>
                             <div className="mt-5 ml-4">
-                                {/* <a className="btn btn-success" href={this.state.locationFile} >Download!</a> */}
+                                <a className="btn btn-success" href={this.state.locationFile} >Download!</a>
                                 <button className="btn btn-success" onClick={this.fileDownload} >Download!</button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

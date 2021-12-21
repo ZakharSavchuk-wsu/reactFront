@@ -10,7 +10,7 @@ class StepsComponent extends Component {
                 info: 'Preprocessing of data sets applies pre-cleaning of data from randomly occurring errors, using a combination of existing efficient approaches into a single algorithm that dynamically analyzes the data and determines the necessary types of cleaning',
                 link: '/clean'
             }, {
-                name: 'Create Clusters',
+                name: 'Create Clusters and build Fuzzy logic rules',
                 info: 'Building fuzzy logical rules using universal methods of clustering in the classical implementation. They are algorithms K-means and Fuzzy C-means',
                 link: '/clustering'
             },
