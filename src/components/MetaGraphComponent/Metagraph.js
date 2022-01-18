@@ -18,6 +18,7 @@ class Metagraph extends PureComponent {
       width: '0',
       height: '0'
     };
+
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);   // handler for window resizing
   }
 
